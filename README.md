@@ -1,2 +1,1 @@
-This will be the README.md for our Group Project with the members Lauren Baxter, Melissa Silcox, Zack Ross and Andrew Munn :)
-
+This is the README.md file for our group project.
