@@ -1,9 +1,11 @@
 @startuml
 'https://plantuml.com/use-case-diagram
-
+left to right direction
 title Use Case: Population of Countries
 
 actor "Data Analyst" as Analyst
+actor "SQL Database" as DB
+
 
 rectangle "Population Country Report" {
     usecase "Generate Population Report" as MainReport
@@ -14,6 +16,7 @@ rectangle "Population Country Report" {
 }
 
 Analyst --> MainReport
+DB --> "Population Country Report"
 MainReport <|-- CountryReport : <<include>>
 CountryReport <|-- ContinentReport : <<include>>
 CountryReport <|-- RegionReport : <<include>>

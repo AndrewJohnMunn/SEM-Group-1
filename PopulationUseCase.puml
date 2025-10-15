@@ -1,0 +1,31 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+title Use Case Diagram – Population Reporting System
+
+
+actor "Data Analyst" as Analyst
+actor "SQL Database" as DB
+
+
+rectangle "Population Reporting System" {
+
+    usecase "Generate Population Report" as MainReport
+    usecase "Population of the World" as WorldReport
+    usecase "Population of Continents" as ContinentReport
+    usecase "Population of Regions" as RegionReport
+    usecase "Population of Countries" as CountryReport
+    usecase "Population of Cities" as CityReport
+
+
+}
+
+Analyst --> MainReport : initiates
+MainReport <|-- WorldReport : <<include>>
+MainReport <|-- ContinentReport : <<include>>
+MainReport <|-- RegionReport : <<include>>
+MainReport <|-- CountryReport : <<include>>
+MainReport <|-- CityReport : <<include>>
+
+DB --> "Population Reporting System"
+@enduml
