@@ -1,0 +1,39 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+title Use Case: Population of Countries
+
+actor "Data Analyst" as Analyst
+
+rectangle "Population Country Report" {
+    usecase "Generate Population Report" as MainReport
+    usecase "Population of Countries" as CountryReport
+    usecase "Retrieve Population by Continent" as ContinentReport
+    usecase "Retrieve Population by Region" as RegionReport
+    usecase "Retrieve Population by Country" as SingleCountryReport
+}
+
+Analyst --> MainReport
+MainReport <|-- CountryReport : <<include>>
+CountryReport <|-- ContinentReport : <<include>>
+CountryReport <|-- RegionReport : <<include>>
+CountryReport <|-- SingleCountryReport : <<include>>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@enduml
