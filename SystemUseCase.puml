@@ -1,18 +1,16 @@
 @startuml
-
-
 left to right direction
-
+'title'
 title Population Information System - Full Use Case Diagram
 
-
+'actors for the diagram'
 actor "Data Analyst" as Analyst
 actor "Viewer" as Viewer
 
-
-
+'whole system block'
 rectangle "Population Information System" as System {
 
+'block for the country'
 rectangle "Country Report" {
         usecase "Generate Country Report" as CountryReport
         usecase "Retrieve Country Code" as CountryCode
@@ -23,6 +21,7 @@ rectangle "Country Report" {
         usecase "Retrieve Capital" as CountryCapital
 }
 
+'block to group the city report as one report'
 rectangle "City Report" {
     usecase "Generate City Report" as CityReport
     usecase "Retrieve City Name" as CityName
@@ -38,14 +37,12 @@ rectangle "Capital City Report" {
      usecase "Retrieve Capital City Country" as CapCountry
      usecase "Retrieve Capital City Population" as CapPopulation
 
-
  }
 
-
+'population report in a block together'
 rectangle "Population Report"{
 
     usecase "Generate Population Report" as PopulationReport
-
     usecase "Calculate Population of World" as PopWorld
     usecase "Calculate Population of Continent" as PopContinent
     usecase "Calculate Population of Region" as PopRegion
@@ -60,12 +57,14 @@ rectangle "Viewed Statistics" {
     usecase "View Language Speaker Statistics" as ViewLanguageStats
 }
 
+'shows the correlation between the actor and the reports'
 Analyst --> CountryReport
 Analyst --> CityReport
 Analyst --> CapitalCityReport
 Analyst --> PopulationReport
 
 
+'direction of the arrows to show the relationship between data in country'
 CountryReport <|-- CountryCode : <<include>>
 CountryReport <|-- CountryName : <<include>>
 CountryReport <|-- CountryContinent : <<include>>
@@ -73,18 +72,18 @@ CountryReport <|-- CountryRegion : <<include>>
 CountryReport <|-- CountryPopulation : <<include>>
 CountryReport <|-- CountryCapital : <<include>>
 
-
+'direction of arrows to show data in city'
 CityReport <|-- CityName : <<include>>
 CityReport <|-- CityCountry : <<include>>
 CityReport <|-- CityDistrict : <<include>>
 CityReport <|-- CityPopulation : <<include>>
 
-
+'direction of arrows to show relationship in capital city'
 CapitalCityReport <|-- CapName : <<include>>
 CapitalCityReport <|-- CapCountry : <<include>>
 CapitalCityReport <|-- CapPopulation : <<include>>
 
-
+'direction of arrows to show relationship in population report'
 PopulationReport <|-- PopWorld : <<include>>
 PopulationReport <|-- PopContinent : <<include>>
 PopulationReport <|-- PopRegion : <<include>>
@@ -92,10 +91,9 @@ PopulationReport <|-- PopCountry : <<include>>
 PopulationReport <|-- PopDistrict : <<include>>
 PopulationReport <|-- PopCity : <<include>>
 
-
+'shows relationship of the viewer'
 Viewer --> ViewPopulation
 Viewer --> ViewLanguageStats
-
 
 
 @enduml
