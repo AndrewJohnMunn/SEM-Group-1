@@ -1,0 +1,101 @@
+@startuml
+
+
+left to right direction
+
+title Population Information System - Full Use Case Diagram
+
+
+actor "Data Analyst" as Analyst
+actor "Viewer" as Viewer
+
+
+
+rectangle "Population Information System" as System {
+
+rectangle "Country Report" {
+        usecase "Generate Country Report" as CountryReport
+        usecase "Retrieve Country Code" as CountryCode
+        usecase "Retrieve Country Name" as CountryName
+        usecase "Retrieve Continent" as CountryContinent
+        usecase "Retrieve Region" as CountryRegion
+        usecase "Retrieve Country Population" as CountryPopulation
+        usecase "Retrieve Capital" as CountryCapital
+}
+
+rectangle "City Report" {
+    usecase "Generate City Report" as CityReport
+    usecase "Retrieve City Name" as CityName
+    usecase "Retrieve City Country" as CityCountry
+    usecase "Retrieve City District" as CityDistrict
+    usecase "Retrieve City Population" as CityPopulation
+
+}
+
+rectangle "Capital City Report" {
+     usecase "Generate Capital City Report" as CapitalCityReport
+     usecase "Retrieve Capital City Name" as CapName
+     usecase "Retrieve Capital City Country" as CapCountry
+     usecase "Retrieve Capital City Population" as CapPopulation
+
+
+ }
+
+
+rectangle "Population Report"{
+
+    usecase "Generate Population Report" as PopulationReport
+
+    usecase "Calculate Population of World" as PopWorld
+    usecase "Calculate Population of Continent" as PopContinent
+    usecase "Calculate Population of Region" as PopRegion
+    usecase "Calculate Population of Country" as PopCountry
+    usecase "Calculate Population of District" as PopDistrict
+    usecase "Calculate Population of City" as PopCity
+}
+
+}
+rectangle "Viewed Statistics" {
+ usecase "View Population Information" as ViewPopulation
+    usecase "View Language Speaker Statistics" as ViewLanguageStats
+}
+
+Analyst --> CountryReport
+Analyst --> CityReport
+Analyst --> CapitalCityReport
+Analyst --> PopulationReport
+
+
+CountryReport <|-- CountryCode : <<include>>
+CountryReport <|-- CountryName : <<include>>
+CountryReport <|-- CountryContinent : <<include>>
+CountryReport <|-- CountryRegion : <<include>>
+CountryReport <|-- CountryPopulation : <<include>>
+CountryReport <|-- CountryCapital : <<include>>
+
+
+CityReport <|-- CityName : <<include>>
+CityReport <|-- CityCountry : <<include>>
+CityReport <|-- CityDistrict : <<include>>
+CityReport <|-- CityPopulation : <<include>>
+
+
+CapitalCityReport <|-- CapName : <<include>>
+CapitalCityReport <|-- CapCountry : <<include>>
+CapitalCityReport <|-- CapPopulation : <<include>>
+
+
+PopulationReport <|-- PopWorld : <<include>>
+PopulationReport <|-- PopContinent : <<include>>
+PopulationReport <|-- PopRegion : <<include>>
+PopulationReport <|-- PopCountry : <<include>>
+PopulationReport <|-- PopDistrict : <<include>>
+PopulationReport <|-- PopCity : <<include>>
+
+
+Viewer --> ViewPopulation
+Viewer --> ViewLanguageStats
+
+
+
+@enduml
