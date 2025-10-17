@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/classes/com /tmp/com
+COPY ./target/semApp.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "-jar", "SEM-Group-1-1.0-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-jar", "semApp.jar"]
