@@ -21,3 +21,4 @@ jobs:
         run: docker logs sem-quick-cw-app-1
 
 
+
