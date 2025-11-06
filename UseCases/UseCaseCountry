@@ -1,4 +1,4 @@
-USE CASE: 4 Generate report on populations
+USE CASE: 1 Generate report on countries
 CHARACTERISTIC INFORMATION,
 Goal in Context,
 As a User I want to produce a report on the populations of countries in a (world/continent/region) organised by largest to smallest.
