@@ -1,0 +1,52 @@
+USE CASE: 4 Generate report on populations
+CHARACTERISTIC INFORMATION,
+Goal in Context,
+As a user, I want to produce a detailed population report showing the total population, the population living in cities (with %), and the population not living in cities (with %) for each continent, region, or country.
+Scope,
+World Database
+Level,
+Primary task,
+Generate population distribution report
+Preconditions,
+Database contains population data.
+Success End Condition,
+The system generates a report showing population distribution for the selected scope (continent/region/country) with total, city-living, and non-city-living populations (including percentages)
+Failed End Condition,
+No report is produced
+Primary Actor,
+Report user
+Trigger,
+A request for a population distribution report for each country/region/country
+MAIN SUCCESS SCENARIO,
+The Report user requests a population report,
+The user selects the scope:,
+Continent,
+Region,
+Country,
+The system retrieves all population records that match the selected scope.,
+The system calculates:,
+Total population of each continent/region/country,
+Total population living in cities (and % of total),
+Total population not living in cities (and % of total),
+The system generates the report containing the following columns:,
+Name (Continent/Region/Country)
+Total Population
+Population Living in Cities
+% Living in Cities
+Population Not Living in Cities
+% Not Living in Cities
+The report is presented to the report user
+the report user provides the population distribution report to the organisation
+EXTENSIONS,
+Invalid scope selected
+,
+If the user does not select a valid scope (Continent, Region, or Country), the system prompts the user to choose one before continuing.,
+If the user enters a continent or region name that does not exist in the database, the system displays a message such as “No such continent/region found” and does not run the report.,
+No country records returned
+,
+If no records are returned from the report users' query, the system shows an error message.,
+SUB-VARIATIONS,
+If two areas have the same total population, the system applies a secondary alphabetical sort by name.,
+The user may optionally filter by "Top N" populated entities.,
+SCHEDULE,
+DUE DATE: 12/11/25

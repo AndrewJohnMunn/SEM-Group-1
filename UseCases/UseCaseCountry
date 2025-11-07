@@ -1,0 +1,39 @@
+USE CASE: 1 Generate report on countries
+CHARACTERISTIC INFORMATION,
+Goal in Context,
+As a User I want to produce a report on the populations of countries in a (world/continent/region) organised by largest to smallest.
+Scope,
+World Database
+Level,
+Primary task
+Preconditions,
+Database contains population data.
+Success End Condition,
+Generated a report on the populations of a country in a (world/continent/region) organised by largest to smallest.
+Failed End Condition,
+No report is produced
+Primary Actor,
+Report user
+Trigger,
+A request for countries in (world/continent/region) to be ranked by population
+MAIN SUCCESS SCENARIO,
+The Report user requests a list of countries organised by population.,
+The user selects the scope:,
+World,
+Continent,
+Region,
+The system retrieves all country records that match the selected scope.,
+Report contains the required columns: Code, Name, Continent, Region, Population, Capital.,
+Report User provides report to the organisation.,
+EXTENSIONS,
+Invalid scope selected
+,
+If the user does not select a valid scope (World, Continent, or Region), the system prompts the user to choose one before continuing.,
+If the user enters a continent or region name that does not exist in the database, the system displays a message such as “No such continent/region found” and does not run the report.,
+No country records returned
+,
+If no country records are returned from the report users' query, the system shows an error message.,
+SUB-VARIATIONS,
+If two countries have the same population, the system applies a secondary alphabetical sort by country name.,
+SCHEDULE,
+DUE DATE: 12/11/25

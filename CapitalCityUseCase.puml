@@ -1,0 +1,24 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+left to right direction
+title Use Case: Capital City Report
+
+actor "Data Analyst" as Analyst
+actor "SQL Database" as DB
+
+rectangle "Capital City Report" {
+    usecase "Generate City Report" as CityReport
+    usecase "Generate Capital City Name" as CityName
+    usecase "Generate Country Name" as CountryName
+    usecase "Generate City Population" as CityPopulation
+
+}
+
+Analyst --> CityReport
+DB --> "Capital City Report"
+CityReport <|--CityName : <<include>>
+CityReport <|-- CountryName : <<include>>
+CityReport <|-- CityPopulation : <<include>>
+}
+
+@enduml
