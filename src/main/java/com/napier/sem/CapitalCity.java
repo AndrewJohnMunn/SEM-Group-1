@@ -1,11 +1,11 @@
 package com.napier.sem;
 
 public class CapitalCity {
-    private int id;
-    private String name;
-    private String country;
-    private String continent;
-    private int population;
+    private final int id;
+    private final String name;
+    private final String country;
+    private final String continent;
+    private final int population;
 
     // ✅ Constructor
     public CapitalCity(int id, String name, String country, String continent, int population) {

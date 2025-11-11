@@ -4,11 +4,11 @@ package com.napier.sem;
  * Represents a city entity in the database.
  */
 public class City {
-    private int id;
-    private String name;
-    private String country;
-    private String district;
-    private int population;
+    private final int id;
+    private final String name;
+    private final String country;
+    private final String district;
+    private final int population;
 
     // ✅ Constructor
     public City(int id, String name, String country, String district, int population) {
