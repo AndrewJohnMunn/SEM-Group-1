@@ -7,8 +7,7 @@ import java.sql.*;
  */
 public class App
 {
-    public App() {
-    }
+    public App() {}
 
     public static void main(String[] args)
     {
@@ -35,7 +34,10 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(1000);
                 // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
+                con = DriverManager.getConnection(
+                        "jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true",
+                        "root", "example"
+                );
                 System.out.println("Successfully connected");
                 // Wait a bit
                 Thread.sleep(1000);
@@ -44,7 +46,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
+                System.out.println("Failed to connect to database attempt " + i);
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -53,19 +55,31 @@ public class App
             }
         }
 
+        // If connection successful, run the language report
         if (con != null)
         {
             try
             {
-                // Close connection
+                System.out.println("\n=== World Language Report ===\n");
+
+                // Create and run the language report
+                LanguageReport report = new LanguageReport(con);
+                report.runReport();
+
+                // Close connection after use
                 con.close();
             }
             catch (Exception e)
             {
-                System.out.println("Error closing connection to database");
+                System.out.println("[ERROR] Problem running report or closing connection: " + e.getMessage());
             }
+        }
+        else
+        {
+            System.out.println("[ERROR] Could not establish database connection.");
         }
     }
 }
+
 
 
