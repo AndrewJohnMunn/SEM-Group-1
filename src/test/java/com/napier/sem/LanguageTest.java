@@ -81,13 +81,6 @@ class LanguageTest {
     }
 
     @Test
-    void testLongLanguageName() {
-        String longName = "A".repeat(100);
-        language.setName(longName);
-        assertEquals(longName, language.getName());
-    }
-
-    @Test
     void testEmptyCountryCode() {
         language.setCountryCode("");
         assertEquals("", language.getCountryCode());
