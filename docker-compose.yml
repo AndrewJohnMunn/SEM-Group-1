@@ -1,13 +1,35 @@
-version: '3'
+version: '3.8'
 services:
-
-  # Build app from Dockerfile in same folder
-  app:
-    build: .
-
-  # Build the db as name db from the Dockerfile in the db folder
-  # exposing the port if we want to run code outside a container
+  # 🟩 MySQL Database Service
   db:
     build: db/.
+    container_name: db
     ports:
       - "33060:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: world
+    volumes:
+      # This ensures world.sql is imported automatically when the container starts
+      - ./data/world.sql:/docker-entrypoint-initdb.d/world.sql:ro
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pexample"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  # 🟦 Application Service
+  app:
+    build: .
+    container_name: app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASS: example
+    stdin_open: true
+    tty: true
+
