@@ -1,35 +1,16 @@
-version: '3.8'
+version: '3'
 services:
-  # 🟩 MySQL Database Service
-  db:
-    build: db/.
-    container_name: db
-    ports:
-      - "33060:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: example
-      MYSQL_DATABASE: world
-    volumes:
-      # This ensures world.sql is imported automatically when the container starts
-      - ./data/world.sql:/docker-entrypoint-initdb.d/world.sql:ro
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-pexample"]
-      interval: 10s
-      timeout: 5s
-      retries: 10
-      start_period: 20s
-
-  # 🟦 Application Service
   app:
     build: .
-    container_name: app
-    depends_on:
-      db:
-        condition: service_healthy
+
+  db:
+    image: mysql:8.0
+    container_name: my_database
     environment:
-      DB_HOST: db
-      DB_USER: root
-      DB_PASS: example
-    stdin_open: true
-    tty: true
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: world
+    ports:
+      - "33060:3306"
+    volumes:
+      - ./db:/docker-entrypoint-initdb.d
 
