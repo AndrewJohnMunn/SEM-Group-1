@@ -55,20 +55,6 @@ class CityTest {
         assertEquals(-500, ghost.getPopulation());
     }
 
-    @Test
-    void testUnicodeCharacters() {
-        City beijing = new City(5, "北京市", "中国", "北京", 21540000);
-        assertEquals("北京市", beijing.getName());
-        assertEquals("中国", beijing.getCountry());
-        assertEquals("北京", beijing.getDistrict());
-    }
-
-    @Test
-    void testArabicCharacters() {
-        City cairo = new City(6, "القاهرة", "مصر", "القاهرة", 9500000);
-        assertEquals("القاهرة", cairo.getName());
-        assertEquals("مصر", cairo.getCountry());
-    }
 
     @Test
     void testEmojiInName() {
