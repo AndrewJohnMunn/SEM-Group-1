@@ -2,16 +2,10 @@ package com.napier.sem;
 
 import java.sql.*;
 
-/**
- * Demo App
- */
 public class App
 {
-    public App() {}
-
     public static void main(String[] args)
     {
-        System.out.println("Hello World");
         try
         {
             // Load Database driver
@@ -34,10 +28,7 @@ public class App
                 // Wait a bit for db to start
                 Thread.sleep(1000);
                 // Connect to database
-                con = DriverManager.getConnection(
-                        "jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true",
-                        "root", "example"
-                );
+                con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false&allowPublicKeyRetrieval=true", "root", "example");
                 System.out.println("Successfully connected");
                 // Wait a bit
                 Thread.sleep(1000);
@@ -46,7 +37,7 @@ public class App
             }
             catch (SQLException sqle)
             {
-                System.out.println("Failed to connect to database attempt " + i);
+                System.out.println("Failed to connect to database attempt " + Integer.toString(i));
                 System.out.println(sqle.getMessage());
             }
             catch (InterruptedException ie)
@@ -55,28 +46,17 @@ public class App
             }
         }
 
-        // If connection successful, run the language report
         if (con != null)
         {
             try
             {
-                System.out.println("\n=== World Language Report ===\n");
-
-                // Create and run the language report
-                LanguageReport report = new LanguageReport(con);
-                report.runReport();
-
-                // Close connection after use
+                // Close connection
                 con.close();
             }
             catch (Exception e)
             {
-                System.out.println("[ERROR] Problem running report or closing connection: " + e.getMessage());
+                System.out.println("Error closing connection to database");
             }
-        }
-        else
-        {
-            System.out.println("[ERROR] Could not establish database connection.");
         }
     }
 }
