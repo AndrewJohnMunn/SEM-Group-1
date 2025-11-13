@@ -1,9 +1,16 @@
 package com.napier.sem;
 
 import java.sql.*;
+import java.util.ArrayList;
 
+/**
+ * Demo App
+ */
 public class App
 {
+    public App() {
+    }
+
     public static void main(String[] args)
     {
         try
@@ -48,6 +55,10 @@ public class App
 
         if (con != null)
         {
+            LanguageReport  lr = new LanguageReport(con);
+            ArrayList<Language> languages = lr.getTopWorldLanguages();
+            lr.printLanguageReport(languages);
+            System.out.println("Amazing! Yippee!");
             try
             {
                 // Close connection
