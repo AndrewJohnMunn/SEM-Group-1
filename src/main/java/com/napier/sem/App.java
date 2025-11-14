@@ -55,9 +55,20 @@ public class App
 
         if (con != null)
         {
+            System.out.println("\n=== Language Report ===\n");
+
             LanguageReport  lr = new LanguageReport(con);
             ArrayList<Language> languages = lr.getTopWorldLanguages();
             lr.printLanguageReport(languages);
+
+
+            CountryReport cr = new CountryReport(con);
+            cr.runReport();
+
+            CapitalCityReport capReport = new CapitalCityReport(con);
+            ArrayList<CapitalCityReport.CapitalCity> capitals = capReport.getCapitalCities();
+            capReport.printReport(capitals);
+
             System.out.println("Amazing! Yippee!");
             try
             {
