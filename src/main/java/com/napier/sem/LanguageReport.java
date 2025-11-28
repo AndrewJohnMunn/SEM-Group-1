@@ -23,24 +23,24 @@ public class LanguageReport {
      * ordered by total speakers descending.
      * @return A list of Language objects with speaker and world percentage data.
      */
-    public ArrayList<Language> getTopWorldLanguages() {
+        public ArrayList<Language> getTopWorldLanguages() {
         ArrayList<Language> languages = new ArrayList<>();
 
         try {
             String sql = """
-                SELECT 
+                SELECT
                     cl.Language AS name,
                     SUM(c.Population * (cl.Percentage / 100)) AS speakers,
                     (SUM(c.Population * (cl.Percentage / 100)) / (SELECT SUM(Population) FROM country)) * 100 AS worldPercentage
-                FROM 
+                FROM
                     countrylanguage cl
-                JOIN 
+                JOIN
                     country c ON cl.CountryCode = c.Code
-                WHERE 
+                WHERE
                     cl.Language IN ('Chinese', 'English', 'Hindi', 'Spanish', 'Arabic')
-                GROUP BY 
+                GROUP BY
                     cl.Language
-                ORDER BY 
+                ORDER BY
                     speakers DESC;
             """;
 
